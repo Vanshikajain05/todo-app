@@ -31,10 +31,10 @@ input[type="text"] {
 
 .grid-list {
   display: grid;
-  grid-template-columns: 50px 400px 200px 50px;
+  grid-template-columns: 50px 300px 300px 200px 50px;
   font-size: 18px;
   font-family: "Courier New", Courier, monospace;
-  margin-left: 300px;
+  margin-left: 150px;
   font-weight: bold;
 }
 
@@ -172,7 +172,7 @@ sup.ant-scroll-number.ant-badge-count.ant-badge-multiple-words {
   flex-direction: row;
 }
 .subheading {
-  margin-left: 100px;
+  margin-left: 50px;
 }
 
 .button-green {

@@ -1,5 +1,13 @@
 import "./App.css";
-import { Alert, Button } from "antd";
+import {
+  message,
+  Button,
+  notification,
+  BackTop,
+  DatePicker,
+  Popconfirm,
+  Space,
+} from "antd";
 import { Checkbox, Select } from "antd";
 import { CloseOutlined, FormOutlined } from "@ant-design/icons";
 import { Input, Badge, Empty } from "antd";
@@ -22,7 +30,7 @@ import "antd/dist/antd.css";
 function App() {
   const [mytodos, setTodos] = useState("");
   const [selectcolor, setColor] = useState("");
-
+  const [selectdate, setDate] = useState("");
   const dispatch = useDispatch();
   const selector = useSelector((state) => state.list);
 
@@ -33,12 +41,23 @@ function App() {
     item = selector.length + " item left";
   }
 
-  // const handleCheckbox = (e) => {
-  //   setCheckAll(e.target.checked);
-  // };
-
   const handlecolorchange = (e) => {
     setColor(e);
+  };
+
+  const handleDateChange = (e) => {
+    setDate(e);
+  };
+
+  const style = {
+    height: 40,
+    width: 40,
+    lineHeight: "40px",
+    borderRadius: 4,
+    backgroundColor: "#1088e9",
+    color: "#fff",
+    textAlign: "center",
+    fontSize: 14,
   };
 
   return (
@@ -57,6 +76,11 @@ function App() {
             value={mytodos}
             onChange={(e) => setTodos(e.target.value)}
           />
+        </div>
+        <div className="subheading">
+          <Space direction="vertical">
+            <DatePicker placeholder="Select Date" onChange={handleDateChange} />
+          </Space>
         </div>
         <div className="subheading">
           <Select
@@ -85,13 +109,17 @@ function App() {
           <Button
             role="Button"
             onClick={() => {
-              if (!mytodos || !selectcolor) {
-                return alert("All fields required");
+              if (!mytodos || !selectcolor || !selectdate) {
+                return message.error("All fields are required!");
               }
               dispatch(
                 addtodo(mytodos, selectcolor),
                 setTodos(""),
-                setColor("")
+                setColor(""),
+                setDate(""),
+                notification.open({
+                  message: "NEW TODO ADDED TO THE LIST",
+                })
               );
             }}
           >
@@ -113,12 +141,17 @@ function App() {
                 />
 
                 <p className="text">{element.data}</p>
+                <p className="text">{element.date}</p>
                 <p className="text">{element.color}</p>
-
-                <CloseOutlined
-                  title="delete-it"
-                  onClick={() => dispatch(deleteTodo(element.data))}
-                />
+                <Popconfirm
+                  className="text"
+                  title="Are you sure to delete this task?"
+                  onConfirm={() => dispatch(deleteTodo(element.data))}
+                  okText="Yes"
+                  cancelText="No"
+                >
+                  <CloseOutlined title="delete-it" />
+                </Popconfirm>
               </div>
             </div>
           );
@@ -179,6 +212,7 @@ function App() {
             Red
           </div>
         </div>
+        <BackTop style={style}>UP</BackTop>
       </div>
     </div>
   );

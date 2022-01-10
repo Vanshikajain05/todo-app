@@ -1,8 +1,9 @@
-export const addtodo = (data, color) => {
+export const addtodo = (data, date, color) => {
   return {
     type: "ADD-TODO",
     payload: {
       data: data,
+      date: date,
       color: color,
       completed: false,
     },
