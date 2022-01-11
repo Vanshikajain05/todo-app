@@ -8,5 +8,8 @@
     "new-version": "lerna version"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "lerna": "^4.0.0"
+  }
 }
