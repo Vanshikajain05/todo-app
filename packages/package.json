@@ -4,7 +4,8 @@
   "description": "",
   "main": "file.js",
   "scripts": {
-    "test": "test"
+    "test": "test",
+    "new-version": "lerna version"
   },
   "author": "",
   "license": "ISC"
