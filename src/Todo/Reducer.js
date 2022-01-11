@@ -69,12 +69,6 @@ const addReducer = (state = initialstate, action) => {
     //     list: bluecolor,
     //   };
 
-    // case "ORANGE-COLOR":
-    //   const orgcolor = state.list.find((e) => e.color === action.payload.color);
-    //   return {
-    //     ...state,
-    //     list: orgcolor,
-    //   };
     // case "PURPLE-COLOR":
     //   const purcolor = state.list.find((e) => e.color === action.payload.color);
     //   return {
