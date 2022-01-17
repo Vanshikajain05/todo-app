@@ -17,7 +17,6 @@ const initialstate = {
 };
 
 const addReducer = (state = initialstate, action) => {
-  debugger;
   switch (action.type) {
     case "ADD-TODO":
       const { data, date, color, completed } = action.payload;
